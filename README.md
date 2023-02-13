@@ -1,6 +1,15 @@
 # den
 Used to quickly store and load data to a .json file as a checkpoint. Useful for testing large operations that you do not wish to rerun.
 
+## Install 
+
+>go get github.com/Pineapples27/den
+
+
+
+> import "github.com/Pineapples27/den"
+
+
 ## Usage
 
 To save the result of a large operation to file for reuse:
