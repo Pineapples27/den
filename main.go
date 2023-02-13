@@ -1,4 +1,4 @@
-package main
+package den
 
 import (
 	"encoding/json"
@@ -20,7 +20,19 @@ func Save(key string, contents interface{}) error {
 	return nil
 }
 
-func Fetch(key string) (returnedContents interface{}, err error) {
+func Fetch(key string, returnPointer interface{}) error {
+	bytes, err := ioutil.ReadFile(keyToFileName(key))
+	if err != nil {
+		return err
+	}
+	err = json.Unmarshal(bytes, &returnPointer)
+	if err != nil {
+		return err
+	}
+	return nil
+}
+
+func FetchRaw(key string) (returnedContents interface{}, err error) {
 	bytes, err := ioutil.ReadFile(keyToFileName(key))
 	if err != nil {
 		return nil, err
